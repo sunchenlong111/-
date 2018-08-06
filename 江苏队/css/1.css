@@ -1,0 +1,15 @@
+*{padding: 0;margin: 0;}
+a{text-decoration: none;display: block;}
+ul,li{list-style: none;}
+#container{width: 700px;height: 500px;overflow: hidden;position: relative;}
+#container #box{width:5000px;position: absolute;}
+#container li {float: left;}
+#container li img{width: 700px;height: 500px;}
+#container:hover .arrow{display: block;}
+.arrow{width: 30px;height: 30px;background-color:#aaaaaa;position: absolute;top: 250px;
+    font-size: 20px;line-height: 30px;text-align: center;margin: 0 auto;cursor: pointer;display: none;}
+.right-arrow{left:670px;}
+#points{width: 100px;position: absolute;bottom:50px;font-size: 0;left: 300px;}
+#points span{display: inline-block;width: 10px;height: 10px;background-color: #aaaaaa;
+    border-radius: 50%;float: left;margin-left: 10px;cursor: pointer;}
+#points .on{background-color: orangered;}
