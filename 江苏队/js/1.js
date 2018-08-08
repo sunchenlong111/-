@@ -33,7 +33,6 @@ window.onload=function () {
             else{
                 moved=false;
                 box.style.left = newLeft + "px";
-                console.log(newLeft);
                 if(newLeft<-3500){
                     box.style.left=-700+"px";
                 }
@@ -88,7 +87,7 @@ window.onload=function () {
             }
             var myIndex=parseInt(this.getAttribute("index"));
             var offset=(myIndex-index)*(-700);
-            if(moved){
+            if(!moved){
                 move(offset);
             }
             index=myIndex;
