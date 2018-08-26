@@ -1,0 +1,14 @@
+body,ul,ol,li,h1,h2,h3,h4,h5,h6,table,dl,dt,dd,th,tr,td,p,span,a,input,textarea,header,footer,em{
+    margin: 0;padding: 0;}
+ul,ol,li{list-style: none}
+h1,h2,h3,h4,h5,h6{font-size:100%;}
+a{display: block;cursor: pointer;text-decoration: none;color:#000;}
+.clearfix:after{
+    content: '';
+    display: table;
+    clear: both;
+}
+
+.clearfix{
+    zoom: 1;
+}
