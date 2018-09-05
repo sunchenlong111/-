@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding: 0;
+            margin:0;
+        }
+
+        #container{
+            width:612px;
+            height:550px;
+            margin: 50px auto;
+            border:2px solid #ac2925;
+            border-radius: 20px;
+        }
+
+        #start{
+            width:50px;
+            height:30px;
+            margin: 50px 0 0 50px;
+            border-radius: 20%;
+        }
+
+        #content{
+            padding-top:50px ;
+        }
+
+        .mates{
+            width:90px;
+            height:50px;
+            float:left;
+            border: 1px solid #aaaaaa;
+            border-radius: 30px;
+            background-color: #aaaaaa;
+            font-family: 宋体;
+            font-size: 20px;
+            font-weight: bold;
+            line-height: 50px;
+            text-align: center;
+            color: green;
+            margin-right: 5px;
+            margin-left: 5px;
+            margin-top: 5px;
+
+        }
+
+        .imgShow{
+
+            width:20%;
+            height:20%;
+            margin: 100px 250px;
+
+        }
+        h3{
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        #body{
+            background: url("images/background.jpg");
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            background-attachment: fixed;
+        }
+    </style>
+</head >
+<body id="body">
+  <h3>江苏苏宁队内点名系统</h3>
+  <div id="container">
+      <input type="button" value="开始" id="start">
+      <div id="content"></div>
+  </div>
+  <script src="common.js"></script>
+  <script>
+      var arr=["吴曦","吉祥","黄紫昌","周云","李昂","顾超","特谢拉","埃德尔","杨笑天","张晓彬","博阿基耶","谢鹏飞"];
+      var timer;
+      for(var i=0;i<arr.length;i++){
+          var person=document.createElement('div');
+          person.innerText=arr[i];
+          person.className="mates";
+          my$('content').appendChild(person);
+      }
+
+
+      var childperson=my$('content').childNodes;
+      var num=childperson.length;
+
+      my$('start').onclick=function () {
+          if(this.value=="开始"){
+              timer=setInterval(function () {
+                  for(var i=0;i<num;i++){
+                      childperson[i].style.backgroundColor="";
+                  }
+                  childperson[Math.floor(Math.random()*num)].style.backgroundColor="red";
+              },100);
+              this.value="停止";
+          }
+          else{
+              clearInterval(timer);
+              this.value="开始";
+              for(var i=0;i<num;i++){
+                  var index=i;
+                if(childperson[i].style.backgroundColor=="red"){
+                    showImg(childperson[index].innerText);
+                }
+              }
+          }
+      }
+
+
+      function showImg(x){
+
+          var img=document.createElement("img");
+          img.src='images/'+x+".jpg";
+          img.className="imgShow";
+          for(var i=0;i<my$('content').childNodes.length;i++){
+
+              console.log(my$('content').childNodes[i].tagName);
+              if(my$('content').childNodes[i].tagName=="IMG"){
+                  my$('content').removeChild(my$('content').lastChild);
+              }
+          }
+          my$('content').appendChild(img);
+      }
+
+
+
+
+
+  </script>
+</body>
+</html>
