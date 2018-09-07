@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>旋转木马轮播图</title>
+  <link rel="stylesheet" href="css/new.css">
+  <script src="../js/common.js"></script>
+  <script>
+    //
+    window.onload=function(){
+    var config = [
+      {
+        width: 300,
+        top: 20,
+        left: 50,
+        opacity: 0.2,
+        zIndex: 2
+      },//0
+      {
+        width: 500,
+        top: 70,
+        left: 0,
+        opacity: 0.8,
+        zIndex: 3
+      },//1
+      {
+        width: 700,
+        top: 100,
+        left: 200,
+        opacity: 1,
+        zIndex: 4
+      },//2
+      {
+        width: 500,
+        top: 70,
+        left: 600,
+        opacity: 0.8,
+        zIndex: 3
+      },//3
+      {
+        width: 300,
+        top: 20,
+        left: 750,
+        opacity: 0.2,
+        zIndex: 2
+      }//4
+    ];
+     var flag=true;//定义标志位
+     var wrap=my$('wrap');
+     var slide=my$('slide');
+     var ulObject=slide.children[0];
+     var list=ulObject.getElementsByTagName('li');
+     
+     //图片散开函数
+     function assign(){
+       for(var i=0;i<list.length;i++){
+        animate(list[i],config[i],function(){
+          flag=true;
+        });//当所有图片完成位置改变时，标志位才为true，否则一直为false，再点击也没有用
+       }
+       
+    }
+
+    assign();
+
+    my$('rightArrow').onclick=function(){
+     
+     
+      if(flag){//如果标志位是真才可以转换
+        flag=false;//一进来现将flag置为false，表明正在运动
+        config.push(config.shift());
+        assign();
+      }
+      
+    }
+
+    my$('leftArrow').onclick=function(){
+      if(flag){//如果标志位是真才可以转换
+        flag=false;
+        config.unshift(config.pop());
+        assign();
+      }
+    }
+    
+  }
+   
+
+   
+  </script>
+
+</head>
+<body>
+<div class="wrap" id="wrap">
+  <div class="slide" id="slide">
+    <ul>
+      <li><a href="#"><img src="images/1.jpg" alt=""></a></li>
+      <li><a href="#"><img src="images/2.jpg" alt=""></a></li>
+      <li><a href="#"><img src="images/3.jpg" alt=""></a></li>
+      <li><a href="#"><img src="images/4.jpg" alt=""></a></li>
+      <li><a href="#"><img src="images/5.jpg" alt=""></a></li>
+    </ul>
+
+    <div class="arrow" id="arrow">
+      <a  class="prev" id="leftArrow"></a>
+      <a  class="next" id="rightArrow"></a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
